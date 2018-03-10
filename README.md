@@ -1,4 +1,5 @@
 dylanblanchard.github.io
 ========================
 
-Homepage
+The homepage of Dylan Blanchard — dylanblanchard.com
+Right simple for a simple life, ya know? 
