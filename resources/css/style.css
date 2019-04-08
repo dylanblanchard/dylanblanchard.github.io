@@ -1,0 +1,50 @@
+html {
+    font-size: 18px;
+    font-family: "Helvetica";
+}
+
+body {
+    color: white;
+    background-color: black;
+    line-height: 1.4;
+}
+
+div {
+    border: 1px red solid;
+}
+
+.container {
+    max-width: 960px;
+    margin: auto;
+    display: flex;
+}
+
+#header {
+    display:block;
+    background-color: white;
+    color: black;
+}
+
+#header a:link {
+    text-decoration: none;
+}
+
+.main {
+    
+ }
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    color:bisque;
+}
+
+a:hover {
+    color: burlywood;
+}
+
+ul {
+  list-style-type: none;  
+}
