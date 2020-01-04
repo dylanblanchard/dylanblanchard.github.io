@@ -1,153 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Dylan Blanchard | UX Researcher</title>
-        <link rel="icon" type="image/icon" href="assets/images/logo.png">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dylan Blanchard | dylanblanchard.com</title>
+    <link rel="icon" type="image/icon" href="resources/images/logo.png">
+    <link href="/resources/css/reset.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="/resources/css/style.css" type="text/css" rel="stylesheet">
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-8089646-1"></script>
-        <script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-8089646-1"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
-
         gtag('config', 'UA-8089646-1');
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #33658A;">
+        <a class="navbar-brand" href="#">Dylan Blanchard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Writing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <!-- Dropdown if I wanna use it
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown link
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                -->
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Heya - I'm Dylan</h1>
+            <img src="/resources/images/dyl.jpeg" class="img-thumbnail rounded-circle">
+            <p class="lead">I like to eat pizza and I try to understand humans. </p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Who is this guy?</h2>
+                <p>You know as well as me. I'm just playing aroudn on the internet.</p>
+            </div>
+        </div>
+
+        <h2>Here's some photos I've taken.</h2>
+        <div class="row">
+            <div class="col-sm">
+                <img src="/resources/images/golden temple.jpeg" class="img-thumbnail">
+            </div>
+            <div class="col-sm">
+                <img src="/resources/images/IMG_0666-1.jpeg" class="img-thumbnail">
+            </div>
+            <div class="col-sm">
+                <img src="/resources/images/tokyo shrine.jpeg" class="img-thumbnail">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <img src="/resources/images/tokyo shrine.jpeg" class="img-thumbnail">
+            </div>
+            <div class="col-sm">
+                <img src="/resources/images/golden temple.jpeg" class="img-thumbnail">
+            </div>
+            <div class="col-sm">
+                <img src="/resources/images/IMG_0666-1.jpeg" class="img-thumbnail">
+            </div>
+        </div>
+
+        <hr>
+        <footer>
+            <nav class="navbar navbar-light" style="background-color:rgb(243, 241, 235);"></nav>
+            <span>Dylan Blanchard / 2020</span>
+            <a href="https://twitter.com/dylanblanchard">Twitter</a>
+            <a href="https://github.com/dylanblanchard">Github</a>
+            <a href="https://instagram.com/dylanb">Instagram</a>
+            </nav>
+        </footer>
+
+        <!-- Bootstrap jquery / JS-->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+</body>
 
-        <link rel="stylesheet" type="text/css" href="">
-        <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,700i" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,700,700i|Josefin+Sans:700" rel="stylesheet">
-        <link href="assets/css/main.css" rel="stylesheet">
-        <link rel="icon" href="assets/images/logo.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-
-    </head>
-
-    <body>
-        <div id="index">                                           <!-- Index starts here -->
-            <div class="container main">
-                <div class="row home">
-                    <div id = "index_left" class="col-md-6 left">
-                        <img class="img-responsive img-rabbit" src="assets/images/home.jpg">
-                    </div>
-                    <div id = "index_right" class="col-md-6 text-center right">
-                        <div class="logo">
-                            <img src="assets/images/logo.png">
-                            <h4>Hi, I'm Dylan Blanchard</h4>
-                        </div>
-                        <p class="home-description">
-                            I like pizza and I try to understand humans. I help others understand humans, too, by building a UX Research team at <a href="https://ux.shopify.com/">Shopify.</a>
-                        </p>
-                        <div class="btn-group-vertical custom_btn animated slideinright">
-                            <div id="about" class="btn btn-rabbit">About</div>
-                            <div id="work" class="btn btn-rabbit">Work</div>
-                            <div id="contact" class="btn btn-rabbit">Contact</div>
-                        </div>
-                        <div class="social">
-                            <a href="https://twitter.com/dylanblanchard"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="https://www.linkedin.com/in/dylanblanchard/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            <a href="https://medium.com/@dylanblanchard"><i class="fa fa-medium" aria-hidden="true"></i></a>
-                            <a href="https://instagram.com/dylanb"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>                                                      <!-- index ends here -->
-
-        <div id="about_scroll" class="pages ">                      <!-- about starts here  -->
-            <div class="container main">
-                <div class="row">
-                    <div class="col-md-6 left" id="about_left">
-                        <img class="img-responsive img-rabbit" src="assets/images/about.jpg">
-                    </div>
-
-                    <div class="col-md-6 right" id="about_right">
-                        <a href="#index" class="btn btn-rabbit back"> <i class="fa fa-angle-left" aria-hidden="true"></i> Back to home </a>
-                        <div id="watermark">
-                            <h2 class="page-title" text-center>About</h2>
-                            <div class="marker">a</div>
-                        </div>
-                        <p class='subtitle'>Hi again, I'm Dylan Blanchard. I'm hopelessly curious, hate shitty experiences, and love the outdoors.
-                        </p>
-                        <p class="info" style="padding-bottom: 30px;">At heart, I'm a researcher who is only satisfied by working to solve the problems we've identified. I'm most energized by big, tangled problems that affect many people. When I'm not digging into problems, I'm likely asking friends to teach me an idea they recently read about. <br> <br> I love biking, hiking, pizza, mountains, and the ocean. </p>
-                    </div>
-                </div>
-            </div>
-        </div>                                                                <!-- About ends here -->
-
-
-
-        <div id="work_scroll" class="pages">                                  <!-- Work starts here -->
-            <div class="container main">
-                <div class="row">
-                    <div class="col-md-6" id="work_left">
-                        <div id="owl-demo" class="owl-carousel owl-theme">
-                            <div class="item"><img class="img-responsive img-rabbit" src="assets/images/work.jpg"></div>
-                          <!--  <div class="item"><img class="img-responsive img-rabbit" src="assets/images/home.jpg"></div>
-                            <div class="item"><img class="img-responsive img-rabbit" src="assets/images/contact.jpg"></div> -->
-                        </div>
-                    </div>
-
-                    <div class="col-md-6" id="work_right">
-                        <a href="#index" class="btn btn-rabbit back"> <i class="fa fa-angle-left" aria-hidden="true"></i> Back to Home </a>
-                        <div id="watermark">
-                            <h2 class="page-title" text-center>Work</h2>
-                            <div class="marker">w</div>
-                        </div>
-                        <p class='subtitle'>I help lead the Research team at Shopify where we do really dope research.
-                        </p>
-                        <p class="info" style="padding-bottom: 30px;">Research is hands-down the most interesting job. We work to understand the vast, varied, and (sometimes) complex workflows of entrepreneurs around the globe. It has taught me to take a systems approach to research, employing open eyes and ears to make sense of the world we live in. I'm also building out a team of world-class researchers hooked on supporting our entrepreneurs. You can read about our work here: <a href="https://ux.shopify.com/">Shopify UX Blog</a> and explore open roles on my team here: <a href="https://shopify.com/careers">Shopify Careers.</p>
-                    </div>
-                </div>
-            </div>
-        </div>                                                                 <!-- Work ends here  -->
-
-
-        <div id="contact_scroll" class="pages">                             <!-- Contact starts here -->
-            <div class="container main">
-                <div class="row">
-                    <div class="col-md-6 left" id="contact_left">
-                        <img class="img-responsive img-rabbit" src="assets/images/contact.jpg">
-                    </div>
-
-                    <div class="col-md-6 right" id="contact_right">
-                        <a href="#index" class="btn btn-rabbit back"> <i class="fa fa-angle-left" aria-hidden="true"></i> Back to Home </a>
-                        <div id="watermark">
-                            <h2 class="page-title" text-center>Contact</h2>
-                            <div class="marker">c</div>
-                        </div>
-                        <p class='subtitle'>If you're interested in research or humans or pizza or Shopify, say hi — hi@dylanblanchard.com <br> <br> Located in Ottawa, Canada. 🇨🇦
-                        </p>
-                        <!-- form -->
-                        <!--
-                        <form class="form_edit">
-                            <div class="form-group">
-                                <input type="name" class="form-control" id="exampleInputName" placeholder="Name">
-                            </div>
-
-                            <div class="form-group">
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                            </div>
-
-                            <div class="form-group">
-                            <textarea class="form-control" rows="5" placeholder="Message"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-rabbit submit">Send Message</button>
-                        </form>  -->
-                    </div>
-                </div>
-            </div>
-        </div>                                                              <!-- Contact ends here -->
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/script.js"></script>
-    </body>
 </html>

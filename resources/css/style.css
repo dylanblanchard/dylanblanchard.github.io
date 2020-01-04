@@ -1,0 +1,21 @@
+img {
+    max-height: 200px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: #F7A185;
+}
+
+body {
+    background-color: rgb(243, 241, 235);
+}
+
+footer a:link {
+    float: right;
+    margin-right: 30px;
+}
+
+a {
+    color: #212529;
+}
