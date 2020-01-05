@@ -10,11 +10,13 @@ body {
     background-color: rgb(243, 241, 235);
 }
 
-footer a:link {
-    float: right;
-    margin-right: 30px;
-}
-
 a {
     color: #212529;
 }
+
+/* footer a:link {
+    float: right;
+    margin-right: 30px;
+} */
+
+/* iPhone 11 pro resolution 2436×1125 pixels */
