@@ -22,4 +22,43 @@ a {
     margin-left: 10px;
 }
 
-/* iPhone 11 pro resolution 2436×1125 pixels */
+@media (prefers-color-scheme: dark) {
+    img {
+        opacity: .75;
+        transition: opacity .5s ease-in-out;
+    }
+
+    img:hover {
+        opacity: 1;
+    }
+
+    body {
+        background-color: #121212;
+    }
+
+    h2 {
+        color: #ffffff;
+        opacity: .75;
+    }
+
+    .col-lg-12 p {
+        color: #ffffff;
+        opacity: .60;
+    }
+
+    footer p,
+    a {
+        color: #ffffff;
+        opacity: .60;
+    }
+
+    .jumbotron {
+        opacity: .80;
+    }
+
+
+
+
+
+
+    /* iPhone 11 pro resolution 2436×1125 pixels */
