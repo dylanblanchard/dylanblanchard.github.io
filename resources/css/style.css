@@ -26,6 +26,7 @@ a {
     img {
         opacity: .75;
         transition: opacity .5s ease-in-out;
+        max-height: 200px;
     }
 
     img:hover {
@@ -55,10 +56,4 @@ a {
     .jumbotron {
         opacity: .80;
     }
-
-
-
-
-
-
-    /* iPhone 11 pro resolution 2436×1125 pixels */
+}
