@@ -6,48 +6,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dylan Blanchard | dylanblanchard.com</title>
     <link rel="icon" type="image/icon" href="resources/images/logo.png">
-    <meta property="og:title" content="Dylan Blanchard | Human Guy" />
-    <meta property="og:image" content="resources/images/coolsq.jpg" />
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.5.0/css/bootstrap.min.css"
-        integrity="sha384-123456" crossorigin="anonymous">
-    <!-- Custom CSS -->
-    <link href="/dylanblanchard.github.io/resources/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="resources/css/reset.css">
+    <link rel="stylesheet" href="resources/css/style.css">
 </head>
 
-<body class="bg-dark text-light">
-    <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6">
-            <!-- Existing content starts here -->
-            <header class="text-center mb-4">
-                <h1 class="mb-2">Dylan Blanchard</h1>
-                <p class="text-muted">A little place on the internet that's mine.</p>
-                <p class="text-muted">In the spirit of personal web pages of old, this site is an untidy collection of
-                    the things I do and the things I’m interested in.</p>
-                <hr class="border-light">
+<body>
+    <div class="site-container">
+        <div class="container is-max-desktop">
+            <!-- Header -->
+            <header class="mb-5">
+                <h1 class="title is-3 site-title mb-4">Dylan Blanchard</h1>
+
+                <!-- Navigation -->
+                <nav class="mb-4">
+                    <div class="is-flex">
+                        <a href="index.html" class="nav-link is-active">writing</a>
+                        <a href="now.html" class="nav-link">now</a>
+                        <a href="about.html" class="nav-link">about</a>
+                    </div>
+                </nav>
+
+                <!-- Custom separator -->
+                <div class="separator"></div>
             </header>
 
+            <!-- Main Content -->
             <main>
-                <section class="text-center">
-                    <h2 class="mb-4">Explore</h2>
-                    <div class="list-group">
-                        <a href="/writing" class="list-group-item list-group-item-action bg-transparent text-light">
-                            Writing
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-transparent text-light">
-                            Placeholder for future sections
-                        </a>
+                <!-- Writing Section -->
+                <div>
+                    <h2 class="is-size-7 has-text-grey-dark mb-5">WRITING</h2>
+
+                    <div>
+                        <div class="article-row">
+                            <div class="is-flex is-justify-content-space-between is-align-items-center">
+                                <a href="friendship-soup.html" class="article-title">Friendship soup</a>
+                                <span class="article-date">Mar '25</span>
+                            </div>
+                        </div>
+
+                        <div class="article-row">
+                            <div class="is-flex is-justify-content-space-between is-align-items-center">
+                                <a href="poem.html" class="article-title">Poem</a>
+                                <span class="article-date">Feb '25</span>
+                            </div>
+                        </div>
+
+                        <div class="article-row">
+                            <div class="is-flex is-justify-content-space-between is-align-items-center">
+                                <a href="cycling-guide.html" class="article-title">Dylan's reference guide for
+                                    cycling</a>
+                                <span class="article-date">Jan '25</span>
+                            </div>
+                        </div>
+
+                        <div class="article-row">
+                            <div class="is-flex is-justify-content-space-between is-align-items-center">
+                                <a href="running-guide.html" class="article-title">Dylan's reference guide for
+                                    running</a>
+                                <span class="article-date">Dec '24</span>
+                            </div>
+                        </div>
                     </div>
-                </section>
+                </div>
+
+                <!-- Custom separator -->
+                <div class="separator"></div>
+
+                <!-- Quote Section -->
+                <div class="quote-block">
+                    <p class="quote-text">
+                        That is why Yoga does not bother much about changing the outside world. There is a Sanskrit
+                        saying, "Mana eva manusyanam karanam bandha moksayoh." "As the mind, so the person; bondage or
+                        liberation are in your own mind." If you feel bound, you are bound. If you feel liberated, you
+                        are liberated.
+                    </p>
+                    <p class="quote-text">
+                        Things outside neither bind nor liberate you; only your attitude toward them does that.
+                    </p>
+                    <p class="quote-author">Sri Swami Satchidananda (The Yoga Sutras)</p>
+                </div>
+
+                <!-- Image -->
+                <div class="has-text-centered my-6">
+                    <img src="hand-image.jpg" alt="Hand image" style="max-width: 100%; opacity: 0.5;" />
+                </div>
             </main>
-            <!-- Existing content ends here -->
         </div>
     </div>
-</div>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.5.0/js/bootstrap.bundle.min.js"
-        integrity="sha384-123456" crossorigin="anonymous"></script>
 </body>
 
 </html>
