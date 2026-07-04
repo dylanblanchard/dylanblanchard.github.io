@@ -9,46 +9,71 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --bg-page: oklch(0.16 0.02 55);
+    --bg-page-stripe: oklch(0.185 0.022 55);
+    --bg-card: oklch(0.19 0.022 50);
+    --bg-icon: oklch(0.14 0.02 50);
+    --border: oklch(0.56 0.025 65);
+    --shadow: oklch(0.06 0.01 50);
+    --text-primary: oklch(0.94 0.015 80);
+    --text-secondary: oklch(0.72 0.02 70);
+    --text-tertiary: oklch(0.62 0.02 70);
+    --text-muted: oklch(0.58 0.02 70);
+    --divider: oklch(0.32 0.02 60);
+    --gold: oklch(0.76 0.14 85);
+    --gold-dim: oklch(0.55 0.09 85);
+    --header-bg: oklch(0.38 0.11 35);
+    --header-shadow: oklch(0.20 0.07 35);
+    --mountain-dark: oklch(0.22 0.05 200);
+    --mountain-light: oklch(0.28 0.07 190);
+    --road: oklch(0.52 0.13 40);
+    --trail: oklch(0.40 0.09 150);
+    --fondo: oklch(0.40 0.09 230);
+    --note-accent: oklch(0.72 0.12 40);
+    --pb-color: oklch(0.68 0.13 40);
+    --btn-primary-bg: oklch(0.10 0.015 50);
+  }
   html, body { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
   *, *::before, *::after { box-sizing: inherit; }
   .race-card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
-  .race-card:hover { transform: translate(-3px,-3px); box-shadow: 10px 10px 0 oklch(0.24 0.03 45); }
-  .btn-primary:hover { background: oklch(0.34 0.05 45) !important; }
-  .btn-secondary:hover, .strava-btn:hover { background: oklch(0.94 0.02 75) !important; }
+  .race-card:hover { transform: translate(-3px,-3px); box-shadow: 10px 10px 0 var(--shadow); }
+  .btn-primary:hover { background: oklch(0.16 0.02 50) !important; }
+  .btn-secondary:hover, .strava-btn:hover { background: oklch(0.26 0.02 58) !important; }
   .back-link:hover { text-decoration: underline; }
 </style>
 </head>
 
 <body>
-<div style="min-height:100vh; background: oklch(0.97 0.016 75); background-image: repeating-linear-gradient(135deg, oklch(0.955 0.018 75) 0px, oklch(0.955 0.018 75) 2px, transparent 2px, transparent 26px); font-family: 'Nunito', sans-serif; color: oklch(0.24 0.03 45); padding-bottom: 72px;">
+<div style="min-height:100vh; background: var(--bg-page); background-image: repeating-linear-gradient(135deg, var(--bg-page-stripe) 0px, var(--bg-page-stripe) 2px, transparent 2px, transparent 26px); font-family: 'Nunito', sans-serif; color: var(--text-primary); padding-bottom: 72px;">
 
   <!-- HEADER / RETRO TRAVEL POSTER BANNER -->
-  <div style="position:relative; overflow:hidden; background: oklch(0.44 0.13 35); padding: 56px 24px 40px; text-align:center;">
+  <div style="position:relative; overflow:hidden; background: var(--header-bg); padding: 56px 24px 40px; text-align:center;">
 
-    <a href="../index.html" class="back-link" style="position:absolute; top:16px; left:20px; z-index:3; font-family:'Nunito',sans-serif; font-size:12px; font-weight:700; color:oklch(0.97 0.02 80 / 0.65); text-decoration:none;">&larr; dylanblanchard.com</a>
+    <a href="../index.html" class="back-link" style="position:absolute; top:16px; left:20px; z-index:3; font-family:'Nunito',sans-serif; font-size:12px; font-weight:700; color:oklch(0.94 0.02 80 / 0.65); text-decoration:none;">&larr; dylanblanchard.com</a>
 
-    <div style="position:absolute; left:50%; top:34px; width:120px; height:120px; margin-left:-60px; border-radius:50%; background: oklch(0.80 0.15 85); box-shadow: 0 0 0 14px oklch(0.80 0.15 85 / 0.18), 0 0 0 28px oklch(0.80 0.15 85 / 0.10);"></div>
+    <div style="position:absolute; left:50%; top:34px; width:120px; height:120px; margin-left:-60px; border-radius:50%; background: var(--gold); box-shadow: 0 0 0 14px oklch(0.76 0.14 85 / 0.18), 0 0 0 28px oklch(0.76 0.14 85 / 0.10);"></div>
     <div style="position:absolute; left:50%; top:34px; width:120px; height:120px; margin-left:-60px;">
-      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:oklch(0.80 0.15 85); transform: translate(-50%,-96px) rotate(0deg);"></div>
-      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:oklch(0.80 0.15 85); transform: translate(-50%,-96px) rotate(45deg); transform-origin: 50% 96px;"></div>
-      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:oklch(0.80 0.15 85); transform: translate(-50%,-96px) rotate(90deg); transform-origin: 50% 96px;"></div>
-      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:oklch(0.80 0.15 85); transform: translate(-50%,-96px) rotate(135deg); transform-origin: 50% 96px;"></div>
-      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:oklch(0.80 0.15 85); transform: translate(-50%,-96px) rotate(180deg); transform-origin: 50% 96px;"></div>
-      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:oklch(0.80 0.15 85); transform: translate(-50%,-96px) rotate(225deg); transform-origin: 50% 96px;"></div>
-      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:oklch(0.80 0.15 85); transform: translate(-50%,-96px) rotate(270deg); transform-origin: 50% 96px;"></div>
-      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:oklch(0.80 0.15 85); transform: translate(-50%,-96px) rotate(315deg); transform-origin: 50% 96px;"></div>
+      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:var(--gold); transform: translate(-50%,-96px) rotate(0deg);"></div>
+      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:var(--gold); transform: translate(-50%,-96px) rotate(45deg); transform-origin: 50% 96px;"></div>
+      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:var(--gold); transform: translate(-50%,-96px) rotate(90deg); transform-origin: 50% 96px;"></div>
+      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:var(--gold); transform: translate(-50%,-96px) rotate(135deg); transform-origin: 50% 96px;"></div>
+      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:var(--gold); transform: translate(-50%,-96px) rotate(180deg); transform-origin: 50% 96px;"></div>
+      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:var(--gold); transform: translate(-50%,-96px) rotate(225deg); transform-origin: 50% 96px;"></div>
+      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:var(--gold); transform: translate(-50%,-96px) rotate(270deg); transform-origin: 50% 96px;"></div>
+      <div style="position:absolute; left:50%; top:50%; width:6px; height:26px; background:var(--gold); transform: translate(-50%,-96px) rotate(315deg); transform-origin: 50% 96px;"></div>
     </div>
 
     <div style="position:absolute; left:0; right:0; bottom:0; height:120px;">
-      <div style="position:absolute; left:-5%; bottom:0; width:45%; height:100px; background:oklch(0.30 0.06 200); clip-path: polygon(0% 100%, 55% 10%, 100% 100%);"></div>
-      <div style="position:absolute; left:22%; bottom:0; width:40%; height:75px; background:oklch(0.38 0.08 190); clip-path: polygon(0% 100%, 50% 5%, 100% 100%);"></div>
-      <div style="position:absolute; right:-8%; bottom:0; width:50%; height:110px; background:oklch(0.30 0.06 200); clip-path: polygon(0% 100%, 48% 15%, 100% 100%);"></div>
-      <div style="position:absolute; right:12%; bottom:0; width:36%; height:70px; background:oklch(0.38 0.08 190); clip-path: polygon(0% 100%, 52% 8%, 100% 100%);"></div>
-      <div style="position:absolute; left:0; right:0; bottom:0; height:22px; background:oklch(0.44 0.13 35);"></div>
+      <div style="position:absolute; left:-5%; bottom:0; width:45%; height:100px; background:var(--mountain-dark); clip-path: polygon(0% 100%, 55% 10%, 100% 100%);"></div>
+      <div style="position:absolute; left:22%; bottom:0; width:40%; height:75px; background:var(--mountain-light); clip-path: polygon(0% 100%, 50% 5%, 100% 100%);"></div>
+      <div style="position:absolute; right:-8%; bottom:0; width:50%; height:110px; background:var(--mountain-dark); clip-path: polygon(0% 100%, 48% 15%, 100% 100%);"></div>
+      <div style="position:absolute; right:12%; bottom:0; width:36%; height:70px; background:var(--mountain-light); clip-path: polygon(0% 100%, 52% 8%, 100% 100%);"></div>
+      <div style="position:absolute; left:0; right:0; bottom:0; height:22px; background:var(--header-bg);"></div>
     </div>
 
     <div style="position:relative; z-index:2;">
-      <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:clamp(36px,6vw,64px); letter-spacing:0.5px; color:oklch(0.97 0.02 80); text-shadow: 3px 3px 0 oklch(0.30 0.10 35);">RACE HORIZON</h1>
+      <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:clamp(36px,6vw,64px); letter-spacing:0.5px; color:oklch(0.96 0.02 80); text-shadow: 3px 3px 0 var(--header-shadow);">RACE HORIZON</h1>
     </div>
   </div>
 
@@ -56,8 +81,8 @@
   <div style="max-width:1180px; margin:0 auto; padding:40px 24px 0;">
 
     <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px;">
-      <span style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:15px; letter-spacing:3px; color:oklch(0.24 0.03 45); white-space:nowrap;">UPCOMING</span>
-      <div style="flex:1; height:3px; background:oklch(0.24 0.03 45); border-radius:2px;"></div>
+      <span style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:15px; letter-spacing:3px; color:var(--text-primary); white-space:nowrap;">UPCOMING</span>
+      <div style="flex:1; height:3px; background:var(--border); border-radius:2px;"></div>
     </div>
 
     <div id="upcoming-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:28px;"></div>
@@ -67,12 +92,12 @@
   <div style="max-width:1180px; margin:0 auto; padding:56px 24px 0;">
 
     <div style="display:flex; align-items:center; gap:16px; margin-bottom:12px;">
-      <span style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:15px; letter-spacing:3px; color:oklch(0.24 0.03 45); white-space:nowrap;">COMPLETED</span>
-      <div style="flex:1; height:3px; background:oklch(0.24 0.03 45); border-radius:2px;"></div>
-      <span id="completed-count" style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; color:oklch(0.5 0.03 45); white-space:nowrap;"></span>
+      <span style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:15px; letter-spacing:3px; color:var(--text-primary); white-space:nowrap;">COMPLETED</span>
+      <div style="flex:1; height:3px; background:var(--border); border-radius:2px;"></div>
+      <span id="completed-count" style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; color:var(--text-tertiary); white-space:nowrap;"></span>
     </div>
 
-    <div id="completed-list" style="background:oklch(0.985 0.008 75); border:3px solid oklch(0.24 0.03 45); border-radius:20px; box-shadow:7px 7px 0 oklch(0.24 0.03 45); padding:6px 22px;"></div>
+    <div id="completed-list" style="background:var(--bg-card); border:3px solid var(--border); border-radius:20px; box-shadow:7px 7px 0 var(--shadow); padding:6px 22px;"></div>
   </div>
 
 </div>
@@ -220,30 +245,30 @@ const RACE_DATA = [
 function headerBadge(item) {
   if (item.isRoad) {
     return `
-      <div style="display:flex; align-items:center; gap:12px; background:oklch(0.60 0.14 40); padding:16px 20px; border-radius:17px 17px 0 0;">
-        <div style="width:38px; height:38px; border-radius:50%; background:oklch(0.97 0.02 80); flex-shrink:0; position:relative;">
-          <div style="position:absolute; inset:9px; border-radius:50%; border:5px solid oklch(0.60 0.14 40);"></div>
+      <div style="display:flex; align-items:center; gap:12px; background:var(--road); padding:16px 20px; border-radius:17px 17px 0 0;">
+        <div style="width:38px; height:38px; border-radius:50%; background:var(--bg-icon); flex-shrink:0; position:relative;">
+          <div style="position:absolute; inset:9px; border-radius:50%; border:5px solid var(--road);"></div>
         </div>
-        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; letter-spacing:1px; color:oklch(0.97 0.02 80);">${item.typeLabel}</span>
+        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; letter-spacing:1px; color:oklch(0.96 0.02 80);">${item.typeLabel}</span>
       </div>`;
   }
   if (item.isTrail) {
     return `
-      <div style="display:flex; align-items:center; gap:12px; background:oklch(0.48 0.10 150); padding:16px 20px; border-radius:17px 17px 0 0;">
-        <div style="width:38px; height:38px; border-radius:50%; background:oklch(0.97 0.02 80); flex-shrink:0; position:relative;">
-          <div style="position:absolute; left:50%; top:50%; width:0; height:0; transform:translate(-50%,-40%); border-left:9px solid transparent; border-right:9px solid transparent; border-bottom:16px solid oklch(0.48 0.10 150);"></div>
+      <div style="display:flex; align-items:center; gap:12px; background:var(--trail); padding:16px 20px; border-radius:17px 17px 0 0;">
+        <div style="width:38px; height:38px; border-radius:50%; background:var(--bg-icon); flex-shrink:0; position:relative;">
+          <div style="position:absolute; left:50%; top:50%; width:0; height:0; transform:translate(-50%,-40%); border-left:9px solid transparent; border-right:9px solid transparent; border-bottom:16px solid var(--trail);"></div>
         </div>
-        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; letter-spacing:1px; color:oklch(0.97 0.02 80);">${item.typeLabel}</span>
+        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; letter-spacing:1px; color:oklch(0.96 0.02 80);">${item.typeLabel}</span>
       </div>`;
   }
   if (item.isFondo) {
     return `
-      <div style="display:flex; align-items:center; gap:12px; background:oklch(0.48 0.10 230); padding:16px 20px; border-radius:17px 17px 0 0;">
-        <div style="width:38px; height:38px; border-radius:50%; background:oklch(0.97 0.02 80); flex-shrink:0; position:relative;">
-          <div style="position:absolute; left:6px; top:12px; width:12px; height:12px; border-radius:50%; border:3px solid oklch(0.48 0.10 230);"></div>
-          <div style="position:absolute; right:6px; top:12px; width:12px; height:12px; border-radius:50%; border:3px solid oklch(0.48 0.10 230);"></div>
+      <div style="display:flex; align-items:center; gap:12px; background:var(--fondo); padding:16px 20px; border-radius:17px 17px 0 0;">
+        <div style="width:38px; height:38px; border-radius:50%; background:var(--bg-icon); flex-shrink:0; position:relative;">
+          <div style="position:absolute; left:6px; top:12px; width:12px; height:12px; border-radius:50%; border:3px solid var(--fondo);"></div>
+          <div style="position:absolute; right:6px; top:12px; width:12px; height:12px; border-radius:50%; border:3px solid var(--fondo);"></div>
         </div>
-        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; letter-spacing:1px; color:oklch(0.97 0.02 80);">${item.typeLabel}</span>
+        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; letter-spacing:1px; color:oklch(0.96 0.02 80);">${item.typeLabel}</span>
       </div>`;
   }
   return "";
@@ -251,57 +276,57 @@ function headerBadge(item) {
 
 function completedIcon(item) {
   if (item.isRoad) {
-    return `<div style="width:30px; height:30px; border-radius:50%; background:oklch(0.60 0.14 40); position:relative;">
-      <div style="position:absolute; inset:7px; border-radius:50%; border:4px solid oklch(0.97 0.02 80);"></div>
+    return `<div style="width:30px; height:30px; border-radius:50%; background:var(--road); position:relative;">
+      <div style="position:absolute; inset:7px; border-radius:50%; border:4px solid var(--bg-card);"></div>
     </div>`;
   }
   if (item.isTrail) {
-    return `<div style="width:30px; height:30px; border-radius:50%; background:oklch(0.48 0.10 150); position:relative;">
-      <div style="position:absolute; left:50%; top:50%; width:0; height:0; transform:translate(-50%,-40%); border-left:7px solid transparent; border-right:7px solid transparent; border-bottom:12px solid oklch(0.97 0.02 80);"></div>
+    return `<div style="width:30px; height:30px; border-radius:50%; background:var(--trail); position:relative;">
+      <div style="position:absolute; left:50%; top:50%; width:0; height:0; transform:translate(-50%,-40%); border-left:7px solid transparent; border-right:7px solid transparent; border-bottom:12px solid var(--bg-card);"></div>
     </div>`;
   }
   if (item.isFondo) {
-    return `<div style="width:30px; height:30px; border-radius:50%; background:oklch(0.48 0.10 230); position:relative;">
-      <div style="position:absolute; left:5px; top:9px; width:9px; height:9px; border-radius:50%; border:2.5px solid oklch(0.97 0.02 80);"></div>
-      <div style="position:absolute; right:5px; top:9px; width:9px; height:9px; border-radius:50%; border:2.5px solid oklch(0.97 0.02 80);"></div>
+    return `<div style="width:30px; height:30px; border-radius:50%; background:var(--fondo); position:relative;">
+      <div style="position:absolute; left:5px; top:9px; width:9px; height:9px; border-radius:50%; border:2.5px solid var(--bg-card);"></div>
+      <div style="position:absolute; right:5px; top:9px; width:9px; height:9px; border-radius:50%; border:2.5px solid var(--bg-card);"></div>
     </div>`;
   }
   return "";
 }
 
 const MEDAL = `
-  <div style="position:absolute; top:14px; left:3px; width:10px; height:16px; background:oklch(0.48 0.10 150); clip-path:polygon(0 0,100% 0,100% 100%,50% 75%,0 100%);"></div>
-  <div style="position:absolute; top:14px; right:3px; width:10px; height:16px; background:oklch(0.60 0.14 40); clip-path:polygon(0 0,100% 0,100% 100%,50% 75%,0 100%);"></div>
-  <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:26px; height:26px; border-radius:50%; background:oklch(0.80 0.15 85); border:2.5px solid oklch(0.24 0.03 45);"></div>
+  <div style="position:absolute; top:14px; left:3px; width:10px; height:16px; background:var(--trail); clip-path:polygon(0 0,100% 0,100% 100%,50% 75%,0 100%);"></div>
+  <div style="position:absolute; top:14px; right:3px; width:10px; height:16px; background:var(--road); clip-path:polygon(0 0,100% 0,100% 100%,50% 75%,0 100%);"></div>
+  <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:26px; height:26px; border-radius:50%; background:var(--gold); border:2.5px solid var(--border);"></div>
 `;
 
 function upcomingCardHTML(item) {
   return `
-    <div class="race-card" style="position:relative; background:oklch(0.985 0.008 75); border:3px solid oklch(0.24 0.03 45); border-radius:20px; overflow:visible; box-shadow:7px 7px 0 oklch(0.24 0.03 45); display:flex; flex-direction:column;">
-      ${item.isNext ? `<div style="position:absolute; top:-14px; left:20px; z-index:3; background:oklch(0.80 0.15 85); color:oklch(0.24 0.03 45); font-family:'Fredoka',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.5px; padding:6px 14px; border-radius:999px; border:2.5px solid oklch(0.24 0.03 45); transform:rotate(-3deg);">NEXT UP</div>` : ""}
+    <div class="race-card" style="position:relative; background:var(--bg-card); border:3px solid var(--border); border-radius:20px; overflow:visible; box-shadow:7px 7px 0 var(--shadow); display:flex; flex-direction:column;">
+      ${item.isNext ? `<div style="position:absolute; top:-14px; left:20px; z-index:3; background:var(--gold-dim); color:var(--text-primary); font-family:'Fredoka',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.5px; padding:6px 14px; border-radius:999px; border:2.5px solid var(--border); transform:rotate(-3deg);">NEXT UP</div>` : ""}
       ${headerBadge(item)}
       <div style="padding:20px 20px 22px; display:flex; flex-direction:column; gap:14px; flex:1;">
         <div>
-          <h2 style="margin:0 0 6px; font-family:'Fredoka',sans-serif; font-weight:600; font-size:21px; line-height:1.2;">${item.name}</h2>
-          <div style="font-size:14px; font-weight:700; color:oklch(0.45 0.03 45); letter-spacing:0.3px;">${item.flag} ${item.location}</div>
-          <div style="font-size:13px; font-weight:600; color:oklch(0.55 0.03 45); margin-top:2px; letter-spacing:0.3px;">${item.dateLabel}</div>
-          ${item.hasStartTime ? `<div style="font-size:12px; font-weight:700; color:oklch(0.6 0.03 45); margin-top:1px;">${item.startTimeLabel}</div>` : ""}
+          <h2 style="margin:0 0 6px; font-family:'Fredoka',sans-serif; font-weight:600; font-size:21px; line-height:1.2; color:var(--text-primary);">${item.name}</h2>
+          <div style="font-size:14px; font-weight:700; color:var(--text-secondary); letter-spacing:0.3px;">${item.flag} ${item.location}</div>
+          <div style="font-size:13px; font-weight:600; color:var(--text-tertiary); margin-top:2px; letter-spacing:0.3px;">${item.dateLabel}</div>
+          ${item.hasStartTime ? `<div style="font-size:12px; font-weight:700; color:var(--text-muted); margin-top:1px;">${item.startTimeLabel}</div>` : ""}
         </div>
         <div style="display:flex; align-items:baseline; gap:10px;">
-          <span style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:56px; line-height:1; color:oklch(0.24 0.03 45);">${item.bigNumber}</span>
+          <span style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:56px; line-height:1; color:var(--text-primary);">${item.bigNumber}</span>
           <div style="display:flex; flex-direction:column;">
-            <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; letter-spacing:0.5px; color:oklch(0.45 0.03 45);">${item.bigUnitLabel}</span>
-            <span style="font-size:12px; font-weight:700; color:oklch(0.6 0.03 45);">${item.subCaption}</span>
+            <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; letter-spacing:0.5px; color:var(--text-secondary);">${item.bigUnitLabel}</span>
+            <span style="font-size:12px; font-weight:700; color:var(--text-muted);">${item.subCaption}</span>
           </div>
         </div>
         <div style="display:flex; flex-wrap:wrap; gap:8px;">
-          ${item.hasDistance ? `<span style="background:oklch(0.94 0.02 75); border:2px solid oklch(0.24 0.03 45); border-radius:999px; padding:4px 12px; font-size:12px; font-weight:800; letter-spacing:0.3px;">${item.distanceLabel}</span>` : ""}
-          ${item.hasElevation ? `<span style="background:oklch(0.94 0.02 75); border:2px solid oklch(0.24 0.03 45); border-radius:999px; padding:4px 12px; font-size:12px; font-weight:800; letter-spacing:0.3px;">${item.elevationLabel}</span>` : ""}
+          ${item.hasDistance ? `<span style="background:var(--bg-icon); border:2px solid var(--border); border-radius:999px; padding:4px 12px; font-size:12px; font-weight:800; letter-spacing:0.3px; color:var(--text-primary);">${item.distanceLabel}</span>` : ""}
+          ${item.hasElevation ? `<span style="background:var(--bg-icon); border:2px solid var(--border); border-radius:999px; padding:4px 12px; font-size:12px; font-weight:800; letter-spacing:0.3px; color:var(--text-primary);">${item.elevationLabel}</span>` : ""}
         </div>
-        ${item.hasNote ? `<a href="${item.noteLink}" target="_blank" rel="noopener" style="font-size:12px; font-weight:700; color:oklch(0.44 0.13 35); text-decoration:none; border-bottom:2px dotted oklch(0.44 0.13 35); align-self:flex-start;">${item.note}</a>` : ""}
+        ${item.hasNote ? `<a href="${item.noteLink}" target="_blank" rel="noopener" style="font-size:12px; font-weight:700; color:var(--note-accent); text-decoration:none; border-bottom:2px dotted var(--note-accent); align-self:flex-start;">${item.note}</a>` : ""}
         <div style="margin-top:auto; display:flex; gap:10px; padding-top:6px;">
-          ${item.hasLink1 ? `<a href="${item.link1Url}" target="_blank" rel="noopener" class="btn-primary" style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:13px; text-decoration:none; color:oklch(0.97 0.02 80); background:oklch(0.24 0.03 45); padding:9px 16px; border-radius:10px;">${item.link1Label} →</a>` : ""}
-          ${item.hasLink2 ? `<a href="${item.link2Url}" target="_blank" rel="noopener" class="btn-secondary" style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:13px; text-decoration:none; color:oklch(0.24 0.03 45); background:transparent; border:2.5px solid oklch(0.24 0.03 45); padding:6px 14px; border-radius:10px;">${item.link2Label} →</a>` : ""}
+          ${item.hasLink1 ? `<a href="${item.link1Url}" target="_blank" rel="noopener" class="btn-primary" style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:13px; text-decoration:none; color:var(--text-primary); background:var(--btn-primary-bg); padding:9px 16px; border-radius:10px;">${item.link1Label} →</a>` : ""}
+          ${item.hasLink2 ? `<a href="${item.link2Url}" target="_blank" rel="noopener" class="btn-secondary" style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:13px; text-decoration:none; color:var(--text-primary); background:transparent; border:2.5px solid var(--border); padding:6px 14px; border-radius:10px;">${item.link2Label} →</a>` : ""}
         </div>
       </div>
     </div>`;
@@ -309,21 +334,21 @@ function upcomingCardHTML(item) {
 
 function completedRowHTML(item) {
   return `
-    <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap; padding:16px 0; border-bottom:2px dashed oklch(0.87 0.015 75);">
-      <div style="min-width:74px; font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; color:oklch(0.5 0.03 45);">${item.dateLabel}</div>
+    <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap; padding:16px 0; border-bottom:2px dashed var(--divider);">
+      <div style="min-width:74px; font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; color:var(--text-tertiary);">${item.dateLabel}</div>
       <div style="width:30px; height:30px; flex-shrink:0; position:relative;">${completedIcon(item)}</div>
       <div style="flex:1; min-width:200px;">
-        <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:16px;">${item.name}</div>
-        <div style="font-size:12px; font-weight:700; color:oklch(0.55 0.03 45); letter-spacing:0.2px;">${item.flag} ${item.location} · ${item.typeLabel}${item.hasDistance ? ` · ${item.distanceLabel}` : ""}</div>
+        <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:16px; color:var(--text-primary);">${item.name}</div>
+        <div style="font-size:12px; font-weight:700; color:var(--text-secondary); letter-spacing:0.2px;">${item.flag} ${item.location} · ${item.typeLabel}${item.hasDistance ? ` · ${item.distanceLabel}` : ""}</div>
       </div>
       <div style="display:flex; align-items:center; gap:10px; min-width:150px;">
         <div style="position:relative; width:30px; height:38px; flex-shrink:0;">${MEDAL}</div>
         <div style="display:flex; flex-direction:column;">
-          <span style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:15px;">${item.finishTime}</span>
-          ${item.hasPB ? `<span style="font-size:10px; font-weight:800; letter-spacing:0.5px; color:oklch(0.60 0.14 40);">${item.pbLabel}</span>` : ""}
+          <span style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:15px; color:var(--text-primary);">${item.finishTime}</span>
+          ${item.hasPB ? `<span style="font-size:10px; font-weight:800; letter-spacing:0.5px; color:var(--pb-color);">${item.pbLabel}</span>` : ""}
         </div>
       </div>
-      ${item.hasStrava ? `<a href="${item.stravaUrl}" target="_blank" rel="noopener" class="strava-btn" style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:12px; text-decoration:none; color:oklch(0.24 0.03 45); background:transparent; border:2px solid oklch(0.24 0.03 45); padding:6px 12px; border-radius:10px; white-space:nowrap;">Strava ↗</a>` : ""}
+      ${item.hasStrava ? `<a href="${item.stravaUrl}" target="_blank" rel="noopener" class="strava-btn" style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:12px; text-decoration:none; color:var(--text-primary); background:transparent; border:2px solid var(--border); padding:6px 12px; border-radius:10px; white-space:nowrap;">Strava ↗</a>` : ""}
     </div>`;
 }
 
