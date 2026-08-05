@@ -122,6 +122,16 @@ const RACE_DATA = [
     link2Url: "https://www.strava.com/routes/3508346235555437532", link2Label: "Route", hasLink2: true
   },
   {
+    id: 18, name: "Handloggers Half", location: "Bowen Island, BC · Canada", flag: "🇨🇦",
+    dateISO: "2026-09-05T09:00:00", typeLabel: "TRAIL RACE",
+    isRoad: false, isTrail: true, isFondo: false,
+    distanceLabel: "21.8 KM", hasDistance: true,
+    elevationLabel: "791 M ELEV", hasElevation: true,
+    hasStartTime: true, startTimeLabel: "9:00 AM start",
+    link1Url: "https://www.handloggershalf.com", link1Label: "Race site", hasLink1: true,
+    link2Url: "https://www.strava.com/routes/3519931073761175922", link2Label: "Route", hasLink2: true
+  },
+  {
     id: 3, name: "Whistler Gran Fondo", location: "Whistler, BC · Canada", flag: "🇨🇦",
     dateISO: "2026-09-12T07:00:00", typeLabel: "GRAN FONDO",
     isRoad: false, isTrail: false, isFondo: true,
@@ -175,6 +185,7 @@ const RACE_DATA = [
     dateISO: "2026-02-07T06:00:00", typeLabel: "MARATHON",
     isRoad: true, isTrail: false, isFondo: false,
     distanceLabel: "42.2 KM", hasDistance: true,
+    hasBlockRecap: true, blockRecapUrl: "chiang-rai-marathon-block.html",
     finishTime: "3:53:55", hasPB: true, pbLabel: "DEBUT: PERSONAL BEST", hasStrava: true, stravaUrl: "https://www.strava.com/activities/17321595850"
   },
   {
@@ -339,7 +350,7 @@ function completedRowHTML(item) {
       <div style="width:30px; height:30px; flex-shrink:0; position:relative;">${completedIcon(item)}</div>
       <div style="flex:1; min-width:200px;">
         <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:16px; color:var(--text-primary);">${item.name}</div>
-        <div style="font-size:12px; font-weight:700; color:var(--text-secondary); letter-spacing:0.2px;">${item.flag} ${item.location} · ${item.typeLabel}${item.hasDistance ? ` · ${item.distanceLabel}` : ""}</div>
+        <div style="font-size:12px; font-weight:700; color:var(--text-secondary); letter-spacing:0.2px;">${item.flag} ${item.location} · ${item.typeLabel}${item.hasDistance ? ` · ${item.distanceLabel}` : ""}${item.hasBlockRecap ? ` · <a href="${item.blockRecapUrl}" target="_blank" rel="noopener" style="color:var(--note-accent); text-decoration:none; border-bottom:1px dotted var(--note-accent);">Block Recap ↗</a>` : ""}</div>
       </div>
       <div style="display:flex; align-items:center; gap:10px; min-width:150px;">
         <div style="position:relative; width:30px; height:38px; flex-shrink:0;">${MEDAL}</div>
