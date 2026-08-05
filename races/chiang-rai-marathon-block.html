@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chiang Rai Marathon — the 20-week block</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#10182F; --night2:#18223F;
+  --paper:#EDE5D6; --muted:#8593B3;
+  --run:#F2A03D; --bike:#4FB58B; --clay:#E0705F; --dawn:#7FA8E8;
+  --rule:rgba(237,229,214,.14); --rule-soft:rgba(237,229,214,.07);
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Newsreader",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--night);color:var(--paper);
+  font-family:var(--body);font-size:17px;line-height:1.6;font-weight:300;
+  background-image:radial-gradient(120% 60% at 50% -10%, rgba(242,160,61,.09), transparent 60%);
+  background-repeat:no-repeat}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.02;letter-spacing:-.02em;margin:0}
+
+.mast{border-bottom:1px solid var(--rule);padding:22px 0 16px;margin-bottom:56px}
+.mast .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:baseline}
+.mast div{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.mast .when{letter-spacing:.06em;text-transform:none}
+
+.hero h1{font-size:clamp(38px,7.4vw,86px);max-width:15ch}
+.hero h1 em{font-style:normal;color:var(--run)}
+.lede{max-width:60ch;margin-top:22px;font-size:clamp(17px,2vw,20px);color:#D6CDBC}
+.lede strong{font-weight:500;color:var(--paper)}
+
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.chart-block{margin:52px 0 0}
+.chart-head{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.legend{display:flex;flex-wrap:wrap;gap:18px;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--muted)}
+.legend i{display:inline-block;width:9px;height:9px;margin-right:7px;border-radius:1px}
+.legend i.dot{border-radius:50%}
+.shell{border:1px solid var(--rule);border-radius:2px;padding:18px 14px 12px;
+  background:linear-gradient(180deg,rgba(242,160,61,.05),rgba(79,181,139,.05))}
+.shell.flat{background:rgba(255,255,255,.018)}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.axis-lbl{font-family:var(--mono);font-size:9px;fill:var(--muted);letter-spacing:.04em}
+.wk-lbl{font-family:var(--mono);font-size:8.5px;fill:var(--muted)}
+.lane-lbl{font-family:var(--mono);font-size:10px;fill:var(--paper);letter-spacing:.08em}
+.lane-sub{font-family:var(--mono);font-size:8.5px;fill:var(--muted)}
+.tick{stroke:var(--rule-soft);stroke-width:1}
+.zero{stroke:rgba(237,229,214,.34);stroke-width:1}
+.bar-run{fill:var(--run)} .bar-bike{fill:var(--bike)} .bar-dim{opacity:.42}
+.chart-foot{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.chart-foot span i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px;vertical-align:1px}
+
+section{margin-top:88px}
+h2{font-size:clamp(25px,3.6vw,38px);margin-bottom:10px}
+.sub{color:var(--muted);max-width:64ch;margin-bottom:28px;font-size:16px}
+.sub b{color:var(--paper);font-weight:400}
+
+.ledger{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:56px 0 0}
+.cell{background:var(--night);padding:22px 18px}
+.cell .n{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,38px);line-height:1;letter-spacing:-.03em}
+.cell .n small{font-size:.44em;font-weight:500;letter-spacing:0;margin-left:3px;color:var(--muted)}
+.cell .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.cell.run .n{color:var(--run)} .cell.bike .n{color:var(--bike)}
+
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13px}
+th{text-align:left;font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:0 12px 10px 0;border-bottom:1px solid var(--rule);white-space:nowrap}
+td{padding:11px 12px 11px 0;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+tbody tr:hover td{background:rgba(237,229,214,.035)}
+.num{text-align:right;padding-right:16px;font-variant-numeric:tabular-nums;white-space:nowrap}
+th.num{padding-right:16px}
+.note{font-family:var(--body);font-size:14.5px;color:#C3BCAE;line-height:1.5;font-weight:300;min-width:24ch}
+.wk{color:var(--paper);font-weight:500;white-space:nowrap}
+.dt{color:var(--muted);white-space:nowrap}
+.krun{color:var(--run)} .kbike{color:var(--bike)}
+tfoot td{border-top:1px solid var(--rule);border-bottom:none;padding-top:14px;font-weight:600;color:var(--paper)}
+tr.hurt td{background:rgba(224,112,95,.07)}
+tr.race td{background:rgba(237,229,214,.05)}
+.tag{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--rule);border-radius:2px;color:var(--muted);margin-left:8px;white-space:nowrap}
+.tag.pr{color:var(--run);border-color:rgba(242,160,61,.45)}
+
+.races{border-top:1px solid var(--rule)}
+.race-row{display:grid;grid-template-columns:112px 1fr auto;gap:8px 22px;padding:20px 0;border-bottom:1px solid var(--rule-soft);align-items:baseline}
+.race-row .d{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.race-row .nm{font-family:var(--display);font-weight:700;font-size:clamp(18px,2.3vw,23px);letter-spacing:-.015em}
+.race-row .nm span{display:block;font-family:var(--body);font-weight:300;font-size:15px;color:#C3BCAE;margin-top:7px;letter-spacing:0;line-height:1.5}
+.race-row .t{font-family:var(--mono);font-size:clamp(16px,2.2vw,20px);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.race-row .t small{display:block;font-size:10.5px;color:var(--muted);margin-top:6px;letter-spacing:.06em}
+.race-row.big .t{color:var(--run)}
+
+.breaks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.brk{background:var(--night);padding:22px 20px}
+.brk .d{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--clay);margin-bottom:10px}
+.brk h3{font-size:19px;margin-bottom:9px}
+.brk p{margin:0;font-size:15px;color:#C3BCAE;line-height:1.55}
+
+.shoes{border-top:1px solid var(--rule)}
+.shoe{display:grid;grid-template-columns:1fr 74px 88px;gap:16px;align-items:center;padding:15px 0;border-bottom:1px solid var(--rule-soft)}
+.shoe .s-n{font-family:var(--mono);font-size:14px}
+.shoe .s-r{font-family:var(--mono);font-size:11.5px;color:var(--muted);text-align:right}
+.shoe .s-k{font-family:var(--mono);font-size:14px;text-align:right;font-variant-numeric:tabular-nums}
+.bar-wrap{grid-column:1/-1;height:3px;background:var(--rule-soft);margin-top:-4px}
+.bar-fill{height:3px;background:var(--run)}
+
+.pull{border-left:2px solid var(--run);padding:6px 0 6px 24px;margin:44px 0;max-width:62ch;font-size:clamp(19px,2.4vw,24px);line-height:1.45;font-weight:300}
+.pull cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:16px}
+
+/* clock stat strip */
+.clocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:26px}
+.clk{background:var(--night);padding:20px 18px}
+.clk .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.clk .big{font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:-.03em;margin:10px 0 6px;line-height:1}
+.clk .big.a{color:var(--run)} .clk .big.b{color:var(--bike)} .clk .big.c{color:var(--dawn)}
+.clk p{margin:0;font-size:14.5px;color:#C3BCAE;line-height:1.5}
+
+footer{margin-top:96px;border-top:1px solid var(--rule);padding:26px 0 72px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+
+@media (max-width:640px){
+  body{font-size:16px}
+  .race-row{grid-template-columns:1fr auto;gap:4px 14px}
+  .race-row .d{grid-column:1/-1}
+  .shoe{grid-template-columns:1fr 60px 76px}
+  .mast{margin-bottom:40px} section{margin-top:64px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .rise{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.22,.7,.3,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+
+<div class="mast">
+  <div class="wrap">
+    <div>Dylan · Chiang Rai Marathon</div>
+    <div class="when">Signed up 18 Sep 2025 &nbsp;·&nbsp; Raced 7 Feb 2026</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero rise">
+    <h1>Twenty weeks, and most of it <em>in the dark</em>.</h1>
+    <p class="lede">Signed up on a Thursday in September. Ran the first session three days later —
+      15.3&nbsp;km of 4-minute reps into a Vancouver headwind. What followed: a hemisphere change,
+      <strong>928&nbsp;km on foot</strong>, <strong>2,266&nbsp;km on the bike</strong>, a week lost to a virus,
+      an ankle rolled in a pitch-black warm-up area in Cambodia, a bike crash on a corner he knew well,
+      and seven races — four of which started before 6&nbsp;a.m., and the last of which started at 9&nbsp;p.m.</p>
+  </div>
+
+  <!-- ===== BLOCK PROFILE ===== -->
+  <div class="chart-block">
+    <div class="chart-head">
+      <div class="kicker">The block profile · weekly volume</div>
+      <div class="legend">
+        <span><i style="background:var(--run)"></i>Running · above</span>
+        <span><i style="background:var(--bike)"></i>Cycling · below</span>
+      </div>
+    </div>
+    <div class="shell">
+      <svg id="chart" viewBox="0 0 1000 420" role="img"
+        aria-label="Weekly volume. Running above a centre axis, cycling below. Running peaks at 62 km in race week and bottoms at 16 km in week 7. Cycling is zero for three weeks in Canada, peaks at 265 km in week 8."></svg>
+    </div>
+    <div class="chart-foot">
+      <span><i style="background:var(--paper)"></i>Race week</span>
+      <span><i style="background:var(--clay)"></i>Illness, injury or crash</span>
+      <span>Separate scales above and below — the shape is the point.</span>
+    </div>
+  </div>
+
+  <div class="ledger">
+    <div class="cell run"><div class="n">928<small>km</small></div><div class="l">Run</div></div>
+    <div class="cell bike"><div class="n">2,266<small>km</small></div><div class="l">Ridden</div></div>
+    <div class="cell"><div class="n">203<small>hrs</small></div><div class="l">Moving time</div></div>
+    <div class="cell"><div class="n">174</div><div class="l">Activities</div></div>
+    <div class="cell"><div class="n">21</div><div class="l">Yoga sessions</div></div>
+    <div class="cell"><div class="n">7</div><div class="l">Races run</div></div>
+  </div>
+
+  <div class="pull">
+    “The funnest training block — minus the week of food poisoning, minus the rolled ankle,
+    minus eating shit on the bike.”
+    <cite>Strava, 7 February 2026, 42.22&nbsp;km later</cite>
+  </div>
+
+  <!-- ===== TIME OF DAY ===== -->
+  <section>
+    <h2>The clock moved before he did</h2>
+    <p class="sub">In Vancouver he was an afternoon runner. Six weeks later, in Chiang Mai, the heat
+      had shoved the entire operation into the morning — and the races kept dragging it further,
+      into the dark on both ends. <b>Every dot is one run.</b></p>
+
+    <div class="shell flat">
+      <svg id="clock" viewBox="0 0 1000 440" role="img"
+        aria-label="Run start times across 24 hours. In Canada runs cluster in the early afternoon with a median of 2:17 pm. In Southeast Asia they cluster at 8 to 11 am with a median of 9:59 am, plus a tail of pre-dawn race starts. Rides stay stubbornly at midday in both places."></svg>
+    </div>
+
+    <div class="clocks">
+      <div class="clk">
+        <div class="lbl">Median run start · Canada</div>
+        <div class="big c">2:17<span style="font-size:.5em"> pm</span></div>
+        <p>Sleep in, eat, run in the warmest part of the day. Only 3 of 23 runs started before 10 a.m.</p>
+      </div>
+      <div class="clk">
+        <div class="lbl">Median run start · SE Asia</div>
+        <div class="big a">9:59<span style="font-size:.5em"> am</span></div>
+        <p>Four hours and eighteen minutes earlier. Half of all runs now started before 10, and one in five before 8.</p>
+      </div>
+      <div class="clk">
+        <div class="lbl">Rides · both continents</div>
+        <div class="big b">1:20<span style="font-size:.5em"> pm</span></div>
+        <p>The bike never moved. Not one ride in Thailand started before 9:28 a.m. or after 3:39 p.m. — every single one was built around lunch.</p>
+      </div>
+      <div class="clk">
+        <div class="lbl">Runs started in full dark</div>
+        <div class="big c">16</div>
+        <p>Before 6 a.m. or after 7 p.m. Includes four 3-to-5 a.m. race mornings and one 9 p.m. marathon.</p>
+      </div>
+    </div>
+
+    <p class="sub" style="margin-top:30px;max-width:66ch">
+      The one thing that never shifted was yoga — median start 5:18&nbsp;p.m., eleven of twenty-one
+      sessions after five. Whatever the day looked like, it ended on the mat.
+    </p>
+  </section>
+
+  <!-- ===== HALF MARATHON ARC ===== -->
+  <section>
+    <h2>Sixteen and a half minutes</h2>
+    <p class="sub">Six half marathons in fourteen weeks. Two of them were deliberately not raced,
+      one was run on a rolled ankle, one had 274&nbsp;m of surprise climbing. The line still went one way.</p>
+    <div class="shell flat">
+      <svg id="halves" viewBox="0 0 1000 340" role="img"
+        aria-label="Half marathon times from October to January, falling from 2 hours 2 minutes to 1 hour 46 minutes."></svg>
+    </div>
+    <div class="chart-foot">
+      <span><i style="background:var(--run)"></i>Raced</span>
+      <span><i style="background:transparent;border:1.5px solid var(--muted)"></i>Run as training</span>
+    </div>
+  </section>
+
+  <!-- ===== RACES ===== -->
+  <section>
+    <h2>Seven races and one time trial</h2>
+    <p class="sub">Four pre-dawn starts, one at dusk, one at nine at night.</p>
+    <div class="races">
+      <div class="race-row">
+        <div class="d">Sun 19 Oct · 8:01 am</div>
+        <div class="nm">PEI Half Marathon<span>Charlottetown. Run as a workout, not a race — roughly 15&nbsp;km easy, then 6&nbsp;km hard. Last run on Canadian ground before Thailand.</span></div>
+        <div class="t">2:02:53<small>21.14 km · 139 m</small></div>
+      </div>
+      <div class="race-row">
+        <div class="d">Sun 2 Nov · 4:00 am</div>
+        <div class="nm">Chiang Mai Bitcoin Half<span>Overnight rain took nothing off the humidity. Pace targets abandoned by km 10, which was the correct call.</span></div>
+        <div class="t">1:59:36<small>21.28 km · moving time</small></div>
+      </div>
+      <div class="race-row">
+        <div class="d">Sun 7 Dec · 5:33 am</div>
+        <div class="nm">Angkor Wat Half<span>Siem Reap. Ankle rolled in the unlit warm-up area, before the gun. Raced anyway, and negative split it: 5:35/km out, 5:19/km back.</span></div>
+        <div class="t">1:56:08<small>21.22 km · chip</small></div>
+      </div>
+      <div class="race-row">
+        <div class="d">Sun 21 Dec · 4:00 am</div>
+        <div class="nm">Chiang Mai Half<span>Deliberately not raced: 10&nbsp;km easy, then 8&nbsp;km at marathon pace. Road camber found the right hip in the last 7&nbsp;km.</span></div>
+        <div class="t">2:01:00<small>21.27 km · chip</small></div>
+      </div>
+      <div class="race-row">
+        <div class="d">Fri 26 Dec · 6:45 pm</div>
+        <div class="nm">5&nbsp;km, solo, Chiang Rai 2 Road<span>Three months to the day after the 22:40 benchmark that opened the block. Eighty seconds faster.<span class="tag pr">PB</span></span></div>
+        <div class="t">21:20<small>5.02 km · vs 22:40 in Sep</small></div>
+      </div>
+      <div class="race-row big">
+        <div class="d">Sun 11 Jan · 3:30 am</div>
+        <div class="nm">HCMC Half Marathon<span>Ho Chi Minh City. Vietnamese visa approved late enough to be a genuine problem. Watch was broken the whole race, so it was run on feel.<span class="tag pr">PR</span></span></div>
+        <div class="t">1:46:23<small>21.60 km · chip</small></div>
+      </div>
+      <div class="race-row">
+        <div class="d">Sun 25 Jan · 6:12 am</div>
+        <div class="nm">Pai Half Marathon<span>Meant to be a flat dress rehearsal; the scouting ride found 274&nbsp;m of climbing the day before. Paced the hills, crested with speed, finished strong.</span></div>
+        <div class="t">1:54:46<small>21.79 km · 274 m</small></div>
+      </div>
+      <div class="race-row big">
+        <div class="d">Sat 7 Feb · 9:00 pm</div>
+        <div class="nm">Chiang Rai Marathon<span>Roughly 80% of it run with nobody in sight, and a third of it in full dark. Avg HR 152 against a max of 174 — the legs quit long before the heart did.</span></div>
+        <div class="t">3:53:55<small>42.22 km · chip · debut</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WEEK LEDGER ===== -->
+  <section>
+    <h2>Week by week</h2>
+    <p class="sub">Twenty weeks, Monday to Sunday.</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead>
+          <tr><th>Week</th><th>Dates</th><th class="num">Runs</th><th class="num">Run km</th>
+              <th class="num">Rides</th><th class="num">Bike km</th><th class="num">Yoga</th>
+              <th>What happened</th></tr>
+        </thead>
+        <tbody id="wkbody"></tbody>
+        <tfoot>
+          <tr><td class="wk">Total</td><td class="dt">18 Sep – 8 Feb</td>
+            <td class="num">105</td><td class="num krun">927.8</td>
+            <td class="num">37</td><td class="num kbike">2,266.1</td>
+            <td class="num">21</td>
+            <td class="note">Plus 8 walks, 2 elliptical sessions and one kayak rented from monks.</td></tr>
+        </tfoot>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== BREAKS ===== -->
+  <section>
+    <h2>Three things that went wrong</h2>
+    <p class="sub">All three are visible in the chart at the top.</p>
+    <div class="breaks">
+      <div class="brk">
+        <div class="d">6 – 16 Nov</div>
+        <h3>Food poisoning, then a virus</h3>
+        <p>Dead on Thursday, attempted a threshold 5&nbsp;km on Friday anyway, then lost the following week
+          outright. Week 7 finished with two runs and 15.6&nbsp;km — the floor of the block.</p>
+      </div>
+      <div class="brk">
+        <div class="d">7 Dec</div>
+        <h3>The ankle, in the dark</h3>
+        <p>Rolled in the unlit warm-up area <em>before</em> the Angkor Wat half. Raced on it anyway.
+          The week after: two elliptical sessions and run volume cut nearly in half.</p>
+      </div>
+      <div class="brk">
+        <div class="d">5 Jan</div>
+        <h3>Down on a familiar corner</h3>
+        <p>Crashed 27&nbsp;km into a ride and blamed sand he never saw. Arms shredded, legs untouched.
+          Six days later: a half marathon PR by nine and a half minutes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SHOES ===== -->
+  <section>
+    <h2>What it was run in</h2>
+    <p class="sub">Six pairs, 927.7&nbsp;km. Two pairs of 1080s took two-thirds of it.</p>
+    <div class="shoes" id="shoes"></div>
+  </section>
+
+  <!-- ===== RACE DAY ===== -->
+  <section>
+    <h2>Race day</h2>
+    <p class="sub">Saturday 7 February, 9:00&nbsp;p.m. Target was 3:38–3:42.</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Measure</th><th class="num">Value</th><th>Read</th></tr></thead>
+        <tbody>
+          <tr><td>Chip time</td><td class="num">3:53:55</td><td class="note">A marathon debut, and by definition a PR.</td></tr>
+          <tr><td>Distance</td><td class="num">42.22 km</td><td class="note">GPS-measured on the watch.</td></tr>
+          <tr><td>Fastest half</td><td class="num">1:50:44</td><td class="note">The opening half, almost certainly.</td></tr>
+          <tr><td>Back half</td><td class="num">≈ 2:03:11</td><td class="note">A positive split of roughly twelve and a half minutes.</td></tr>
+          <tr><td>Fastest 10 km</td><td class="num">52:03</td><td class="note">Inside the first hour, before the fade began around km 24.</td></tr>
+          <tr><td>Average HR</td><td class="num">152 bpm</td><td class="note">Against a max of 174. Comfortably aerobic the whole way.</td></tr>
+          <tr><td>Max HR</td><td class="num">161 bpm</td><td class="note">The engine never got near its ceiling. The chassis stopped first.</td></tr>
+          <tr><td>Cadence</td><td class="num">166 spm</td><td class="note">Held steady from gun to line.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>928 km · 2,266 km · 203 hours · 18 Sep 2025 – 7 Feb 2026</footer>
+</div>
+
+<script>
+const WEEKS = [
+ {l:"Prologue",r:"18 – 28 Sep",rn:7,rk:57.3,bn:5,bk:191.9,y:3,note:"Signed up on the 18th. “Day 0” was 15.3 km of 4-min reps on the 21st. Opening 5 km benchmark: 22:40."},
+ {l:"Week 1",r:"29 Sep – 5 Oct",rn:6,rk:59.3,bn:0,bk:0,y:0,note:"Bike-free by design, still in Canada. The largest pure-running week of the block."},
+ {l:"Week 2",r:"6 – 12 Oct",rn:5,rk:40.7,bn:0,bk:0,y:0,note:"6×800 in the wet. Chicago marathon weekend spent shouting at a phone."},
+ {l:"Week 3",r:"13 – 19 Oct",rn:4,rk:48.6,bn:0,bk:0,y:0,note:"Track ladder — 1600/1200/800/400 — then east to PEI. Half marathon on the Sunday.",race:1},
+ {l:"Week 4",r:"20 – 26 Oct",rn:5,rk:45.3,bn:2,bk:104.8,y:1,note:"72 hours of flying to Chiang Mai. Heat hit immediately: 5×1 km at noon in 29°C went badly. Bike back under him."},
+ {l:"Week 5",r:"27 Oct – 2 Nov",rn:6,rk:48.1,bn:1,bk:72.3,y:2,note:"Bitcoin Half at 4 a.m. on the Sunday, in rain that did nothing for the humidity.",race:1},
+ {l:"Week 6",r:"3 – 9 Nov",rn:7,rk:47.5,bn:1,bk:55.9,y:4,note:"Food poisoning Thursday. Attempted the 5 km time trial Friday anyway; the track closed three laps in.",hurt:1},
+ {l:"Week 7",r:"10 – 16 Nov",rn:2,rk:15.6,bn:0,bk:0,y:2,note:"Sick. Two runs, no bike. The floor of the block — the only week under 28 km.",hurt:1},
+ {l:"Week 8",r:"17 – 23 Nov",rn:5,rk:53.5,bn:4,bk:264.8,y:2,note:"Antivirals did their work. Biggest cycling week of the block, and a 10 km marathon-pace block inside a 14.7 km run."},
+ {l:"Week 9",r:"24 – 30 Nov",rn:5,rk:52.5,bn:3,bk:218.8,y:3,note:"8×600 on the track. Full hybrid rhythm — five runs, three long rides, three yoga sessions."},
+ {l:"Week 10",r:"1 – 7 Dec",rn:6,rk:50.3,bn:3,bk:207.8,y:0,note:"Flew to Siem Reap. Rolled the ankle in the dark, then raced the Angkor Wat half on it.",race:1,hurt:1},
+ {l:"Week 11",r:"8 – 14 Dec",rn:3,rk:28.9,bn:2,bk:139.6,y:1,note:"Two elliptical sessions, then cautious test runs. Running halved; cycling carried the aerobic load.",hurt:1},
+ {l:"Week 12",r:"15 – 21 Dec",rn:5,rk:42.8,bn:3,bk:240.5,y:0,note:"A 114 km ride midweek — the longest of the block. Chiang Mai half on Sunday, run as a long training day.",race:1},
+ {l:"Week 13",r:"22 – 28 Dec",rn:7,rk:45.9,bn:3,bk:214.6,y:1,note:"Boxing Day 5 km: 21:20. Eighty seconds off the September benchmark, three months to the day.",race:1},
+ {l:"Week 14",r:"29 Dec – 4 Jan",rn:5,rk:58.2,bn:1,bk:54.4,y:0,note:"The key session: 28 km with a 12 km “power hour” at 5:10–5:20. Hip flexors spoke up at km 25."},
+ {l:"Week 15",r:"5 – 11 Jan",rn:6,rk:49.1,bn:1,bk:27.5,y:1,note:"Crashed the bike Monday. Visa approved at the eleventh hour. Half marathon PR in Ho Chi Minh City on Sunday.",race:1,hurt:1},
+ {l:"Week 16",r:"12 – 18 Jan",rn:4,rk:39.8,bn:4,bk:242.6,y:0,note:"Friends month. Four rides, 242.6 km, and an 8 km marathon-pace block at sunset."},
+ {l:"Week 17",r:"19 – 25 Jan",rn:6,rk:46.6,bn:2,bk:117.8,y:0,note:"Pai. The dress rehearsal that turned out to have 274 m of climbing in it.",race:1},
+ {l:"Week 18",r:"26 Jan – 1 Feb",rn:5,rk:35.7,bn:1,bk:67.2,y:0,note:"Taper opens. 2×2 km at marathon pace midweek, then home to Chiang Mai."},
+ {l:"Week 19",r:"2 – 8 Feb",rn:6,rk:62.1,bn:1,bk:45.6,y:1,note:"Race week. Short sharpeners, one lunch ride, then 42.22 km starting at 9 p.m. on the Saturday.",race:1,big:1}
+];
+
+const SHOES=[
+ {n:"New Balance FF 1080 · “Fresh Blancos”",runs:55,km:444.7},
+ {n:"New Balance FF 1080 · v14",runs:20,km:178.6},
+ {n:"Adidas Adizero Evo SL",runs:18,km:172.7},
+ {n:"Nike Vaporfly",runs:6,km:95.2},
+ {n:"Adidas Adios Pro 4",runs:5,km:30.5},
+ {n:"Altra FWD Via",runs:1,km:6.1}
+];
+
+/* run start hours: [hour, count] per lane */
+const CAN_RUNS=[6,8,9,11,11,12,12,12,13,13,14,14,14,15,15,16,16,16,16,18,18,20,21];
+const SEA_RUNS=[3,3,3,3,4,4,4,5,5,6,6,6,6,7,7,7,7,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,11,12,12,13,13,14,16,17,17,17,17,18,18,18,18,18,18,19,19,19,20,21];
+const RIDES  =[9,9,10,11,11,12,12,12,12,12,12,12,12,12,12,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,15,15,15,15,15,15,16];
+
+/* ---- week table ---- */
+document.getElementById('wkbody').innerHTML = WEEKS.map(w=>{
+  const cls = w.big ? 'race' : (w.hurt ? 'hurt' : '');
+  return `<tr class="${cls}"><td class="wk">${w.l}</td><td class="dt">${w.r}</td>
+    <td class="num">${w.rn}</td><td class="num krun">${w.rk.toFixed(1)}</td>
+    <td class="num">${w.bn}</td><td class="num kbike">${w.bk.toFixed(1)}</td>
+    <td class="num">${w.y||'—'}</td><td class="note">${w.note}</td></tr>`;
+}).join('');
+
+/* ---- shoes ---- */
+const maxShoe=Math.max(...SHOES.map(s=>s.km));
+document.getElementById('shoes').innerHTML=SHOES.map(s=>`
+  <div class="shoe"><div class="s-n">${s.n}</div>
+  <div class="s-r">${s.runs} run${s.runs>1?'s':''}</div>
+  <div class="s-k">${s.km.toFixed(1)} km</div>
+  <div class="bar-wrap"><div class="bar-fill" style="width:${(s.km/maxShoe*100).toFixed(1)}%"></div></div></div>`).join('');
+
+/* ---- diverging block profile ---- */
+(function(){
+  const W=1000,H=420,padL=42,padR=14,padT=16,padB=16,axisY=204;
+  const upH=axisY-padT-30, dnH=H-padB-axisY-26, runMax=70, bikeMax=280;
+  const n=WEEKS.length, plotW=W-padL-padR, step=plotW/n, bw=Math.min(30,step*0.56);
+  let s='';
+  [20,40,60].forEach(v=>{const y=axisY-(v/runMax)*upH;
+    s+=`<line class="tick" x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}"/><text class="axis-lbl" x="${padL-8}" y="${y+3}" text-anchor="end">${v}</text>`;});
+  [100,200].forEach(v=>{const y=axisY+(v/bikeMax)*dnH;
+    s+=`<line class="tick" x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}"/><text class="axis-lbl" x="${padL-8}" y="${y+3}" text-anchor="end">${v}</text>`;});
+  s+=`<text class="axis-lbl" x="${padL-8}" y="${padT+4}" text-anchor="end">km</text>`;
+  s+=`<text class="axis-lbl" x="${padL-8}" y="${H-padB}" text-anchor="end">km</text>`;
+  WEEKS.forEach((w,i)=>{
+    const cx=padL+step*i+step/2, x=cx-bw/2;
+    const rh=(w.rk/runMax)*upH, bh=(w.bk/bikeMax)*dnH, dim=w.big?'':' bar-dim';
+    if(rh>0) s+=`<rect class="bar-run${dim}" x="${x}" y="${axisY-rh}" width="${bw}" height="${rh}" rx="1"><title>${w.l}: ${w.rk.toFixed(1)} km run</title></rect>`;
+    if(bh>0) s+=`<rect class="bar-bike${dim}" x="${x}" y="${axisY}" width="${bw}" height="${bh}" rx="1"><title>${w.l}: ${w.bk.toFixed(1)} km ridden</title></rect>`;
+    s+=`<text class="wk-lbl" x="${cx}" y="${axisY-rh-7}" text-anchor="middle" style="fill:var(--run);opacity:${w.big?1:.85}">${w.rk.toFixed(0)}</text>`;
+    s+=`<text class="wk-lbl" x="${cx}" y="${axisY+13}" text-anchor="middle">${i===0?'pro':i}</text>`;
+    if(w.race) s+=`<circle fill="var(--paper)" cx="${cx-(w.hurt?4.5:0)}" cy="${axisY+22}" r="2.4"/>`;
+    if(w.hurt) s+=`<circle fill="var(--clay)" cx="${cx+(w.race?4.5:0)}" cy="${axisY+22}" r="2.4"/>`;
+  });
+  s+=`<line class="zero" x1="${padL}" y1="${axisY}" x2="${W-padR}" y2="${axisY}"/>`;
+  document.getElementById('chart').innerHTML=s;
+})();
+
+/* ---- 24-hour dot lanes ---- */
+(function(){
+  const W=1000,H=440,padL=104,padR=20;
+  const plotW=W-padL-padR, hw=plotW/24;
+  const lanes=[
+    {t:"VANCOUVER + PEI",s:"23 runs · Sep–Oct",data:CAN_RUNS,y:96,col:"var(--dawn)",med:14.28},
+    {t:"THAILAND +",s:"82 runs · Oct–Feb",data:SEA_RUNS,y:250,col:"var(--run)",med:9.98},
+    {t:"EVERY RIDE",s:"37 rides · both",data:RIDES,y:392,col:"var(--bike)",med:13.27}
+  ];
+  const x=h=>padL+h*hw;
+  let s='';
+  // night bands
+  s+=`<rect x="${x(0)}" y="34" width="${hw*6}" height="${H-58}" fill="rgba(4,10,28,.55)"/>`;
+  s+=`<rect x="${x(19)}" y="34" width="${hw*5}" height="${H-58}" fill="rgba(4,10,28,.55)"/>`;
+  s+=`<text class="axis-lbl" x="${x(3)}" y="26" text-anchor="middle" style="letter-spacing:.2em">DARK</text>`;
+  s+=`<text class="axis-lbl" x="${x(21.5)}" y="26" text-anchor="middle" style="letter-spacing:.2em">DARK</text>`;
+  // hour grid
+  for(let h=0;h<=24;h+=2){
+    s+=`<line class="tick" x1="${x(h)}" y1="34" x2="${x(h)}" y2="${H-24}"/>`;
+    const lbl = h===0?'12a':h===12?'12p':h<12?h+'a':(h-12)+'p';
+    s+=`<text class="axis-lbl" x="${x(h)}" y="${H-8}" text-anchor="middle">${lbl}</text>`;
+  }
+  lanes.forEach(L=>{
+    const counts={};
+    s+=`<text class="lane-lbl" x="${padL-14}" y="${L.y-14}" text-anchor="end">${L.t}</text>`;
+    s+=`<text class="lane-sub" x="${padL-14}" y="${L.y}" text-anchor="end">${L.s}</text>`;
+    L.data.forEach(h=>{
+      counts[h]=(counts[h]||0)+1;
+      const k=counts[h];
+      const cx=x(h)+hw/2, cy=L.y-(k-1)*7.4;
+      s+=`<circle cx="${cx}" cy="${cy}" r="3" fill="${L.col}" opacity=".88"/>`;
+    });
+    // median marker
+    s+=`<line x1="${x(L.med)}" y1="${L.y+9}" x2="${x(L.med)}" y2="${L.y+22}" stroke="${L.col}" stroke-width="2"/>`;
+    const hh=Math.floor(L.med), mm=Math.round((L.med%1)*60);
+    const t12=(hh%12===0?12:hh%12)+':'+String(mm).padStart(2,'0')+(hh<12?'a':'p');
+    s+=`<text class="lane-sub" x="${x(L.med)}" y="${L.y+33}" text-anchor="middle" style="fill:${L.col}">med ${t12}</text>`;
+  });
+  document.getElementById('clock').innerHTML=s;
+})();
+
+/* ---- half marathon progression ---- */
+(function(){
+  const H2=[
+   {d:"19 Oct",lbl:"PEI",sec:7373,train:1},
+   {d:"2 Nov",lbl:"Bitcoin",sec:7176},
+   {d:"7 Dec",lbl:"Angkor Wat",sec:6968},
+   {d:"21 Dec",lbl:"Chiang Mai",sec:7260,train:1},
+   {d:"11 Jan",lbl:"HCMC",sec:6383},
+   {d:"25 Jan",lbl:"Pai",sec:6886}
+  ];
+  const W=1000,H=340,padL=74,padR=28,padT=34,padB=52;
+  const lo=6300,hi=7440, plotW=W-padL-padR, plotH=H-padT-padB;
+  const y=v=>padT+((v-lo)/(hi-lo))*plotH;
+  const x=i=>padL+(i/(H2.length-1))*plotW;
+  const fmt=s=>Math.floor(s/3600)+':'+String(Math.floor(s%3600/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+  let s='';
+  [6600,6900,7200].forEach(v=>{
+    s+=`<line class="tick" x1="${padL}" y1="${y(v)}" x2="${W-padR}" y2="${y(v)}"/>`;
+    s+=`<text class="axis-lbl" x="${padL-10}" y="${y(v)+3}" text-anchor="end">${fmt(v).slice(0,4)}</text>`;
+  });
+  // trend line through raced efforts only
+  const raced=H2.map((h,i)=>({...h,i})).filter(h=>!h.train);
+  s+=`<polyline fill="none" stroke="var(--run)" stroke-width="1.6" opacity=".55"
+      points="${raced.map(h=>`${x(h.i)},${y(h.sec)}`).join(' ')}"/>`;
+  H2.forEach((h,i)=>{
+    const cx=x(i), cy=y(h.sec);
+    if(h.train) s+=`<circle cx="${cx}" cy="${cy}" r="6" fill="var(--night)" stroke="var(--muted)" stroke-width="1.6"/>`;
+    else s+=`<circle cx="${cx}" cy="${cy}" r="6.5" fill="var(--run)"/>`;
+    s+=`<text class="wk-lbl" x="${cx}" y="${cy-14}" text-anchor="middle"
+        style="fill:${h.train?'var(--muted)':'var(--paper)'};font-size:12px">${fmt(h.sec)}</text>`;
+    s+=`<text class="axis-lbl" x="${cx}" y="${H-26}" text-anchor="middle" style="fill:var(--paper);font-size:10px">${h.lbl}</text>`;
+    s+=`<text class="axis-lbl" x="${cx}" y="${H-12}" text-anchor="middle">${h.d}</text>`;
+  });
+  document.getElementById('halves').innerHTML=s;
+})();
+</script>
+</body>
+</html>
