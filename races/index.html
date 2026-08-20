@@ -114,14 +114,6 @@ function fmtDate(iso) {
 const RACE_DATA = [
   // upcoming
   {
-    id: 2, name: "Tour de Victoria", location: "Victoria, BC · Canada", flag: "🇨🇦",
-    dateISO: "2026-08-15T08:00:00", typeLabel: "GRAN FONDO",
-    isRoad: false, isTrail: false, isFondo: true,
-    distanceLabel: "140 KM", hasDistance: true,
-    link1Url: "https://tourdevictoria.com", link1Label: "Race site", hasLink1: true,
-    link2Url: "https://www.strava.com/routes/3508346235555437532", link2Label: "Route", hasLink2: true
-  },
-  {
     id: 18, name: "Handloggers Half", location: "Bowen Island, BC · Canada", flag: "🇨🇦",
     dateISO: "2026-09-05T09:00:00", typeLabel: "TRAIL RACE",
     isRoad: false, isTrail: true, isFondo: false,
@@ -166,6 +158,13 @@ const RACE_DATA = [
     link1Url: "https://chiangmai.utmb.world/races/Hmong50-Day", link1Label: "Race site", hasLink1: true
   },
   // completed
+  {
+    id: 2, name: "Tour de Victoria", location: "Victoria, BC · Canada", flag: "🇨🇦",
+    dateISO: "2026-08-15T08:00:00", typeLabel: "GRAN FONDO",
+    isRoad: false, isTrail: false, isFondo: true,
+    distanceLabel: "140 KM", hasDistance: true,
+    finishTime: "5:04:15", hasStrava: true, stravaUrl: "https://www.strava.com/activities/19757092465"
+  },
   {
     id: 1, name: "Beneva Vancouver Half Marathon", location: "Vancouver, BC · Canada", flag: "🇨🇦",
     dateISO: "2026-06-28T09:00:00", typeLabel: "HALF MARATHON",
