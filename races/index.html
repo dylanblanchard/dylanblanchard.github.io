@@ -121,7 +121,8 @@ const RACE_DATA = [
     elevationLabel: "791 M ELEV", hasElevation: true,
     hasStartTime: true, startTimeLabel: "9:00 AM start",
     link1Url: "https://www.handloggershalf.com", link1Label: "Race site", hasLink1: true,
-    link2Url: "https://www.strava.com/routes/3519931073761175922", link2Label: "Route", hasLink2: true
+    link2Url: "https://www.strava.com/routes/3519931073761175922", link2Label: "Route", hasLink2: true,
+    finishTime: "2:31:03", hasStrava: true, stravaUrl: "https://www.strava.com/activities/20051320681"
   },
   {
     id: 3, name: "Whistler Gran Fondo", location: "Whistler, BC · Canada", flag: "🇨🇦",
@@ -370,12 +371,14 @@ function completedRowHTML(item) {
 }
 
 function render() {
-  const now = Date.now();
+  const now = new Date();
+  const todayKey = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
 
   const withComputed = RACE_DATA.map(r => {
-    const raceTime = new Date(r.dateISO).getTime();
-    const msDiff = raceTime - now;
-    const completed = msDiff < 0;
+    const raceDate = new Date(r.dateISO);
+    const raceKey = raceDate.getFullYear() * 10000 + (raceDate.getMonth() + 1) * 100 + raceDate.getDate();
+    const completed = todayKey > raceKey;
+    const msDiff = raceDate.getTime() - now.getTime();
     const daysLeft = Math.max(0, Math.ceil(msDiff / 86400000));
     const weeksNum = Math.floor(daysLeft / 7);
     const bigNumber = String(weeksNum);
